@@ -5,14 +5,18 @@
 
 ---
 
-Official implementation of **GlimpRouter: Efficient Collaborative Inference by Glimpsing One Token of Thoughts**.
+Official implementation of the ACL 2026 Findings paper:  **GlimpRouter: Efficient Collaborative Inference by Glimpsing One Token of Thoughts**.
 
 | ![./assets/overview.png](./assets/overview.png) |
 |:--:|
 |GlimpRouter is a lightweight, training-free step-wise routing framework that uses the entropy of the initial token in each reasoning step to decide whether a small model or a large model should generate the step.|
 
 
+## Updates
 
+- **8 Jan, 2026** : Paper published in Arxiv.
+- **9 Jan, 2026** : Code published.
+- **7 April, 2026** : Paper accepted by ACL 2026 as Findings.
 
 ## Code
 
