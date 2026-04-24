@@ -1,12 +1,15 @@
 # %%
 import os
+import pickle
 import pprint
 import logging
 import numpy as np
 from openai import OpenAI
 import statistics
 from collections import Counter
+from tqdm import tqdm
 import json
+import random
 import re
 
 def get_avg_score(scores):
@@ -22,21 +25,19 @@ def get_model(model_size):
 
 # %%
 model_names = {
-    "32b": "YOUR_MODEL_NAME_FOR_32B",  # NOTE: change to the name of your 32b large model, e.g. "org/model-32b"
-    "4b": "YOUR_MODEL_NAME_FOR_4B",  # NOTE: change to the name of your 4b small model
+    "32b": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",     # OR change to the name of your 32b large model, e.g. "org/model-32b"
+    "4b": "Qwen/Qwen3-4B-Thinking-2507",    # OR change to the name of your 4b small model
 }
-
 ports = {
-    "32b": "YOUR_PORT_FOR_32B",  # NOTE: change to the port of your 32b large model, e.g. "11125"
-    "4b": "YOUR_PORT_FOR_4B",  # NOTE: change to the port of your 4b small model, e.g. "11130"
+    "32b": "17125",  # NOTE: change to the port of your 32b large model, e.g. "11125"
+    "4b": "17130",  # NOTE: change to the port of your 4b small model, e.g. "11130"
 }
 
 clients = {}
 for size, full_name in model_names.items():
-    # OpenAI-compatible client; replace placeholders with your local endpoint.
     clients[size] = OpenAI(
-        api_key="YOUR_API_KEY",  # NOTE: change to the api key of your model
-        base_url="YOUR_BASE_URL",  # NOTE: change to the base url of your model, e.g. f"http://localhost:{ports[size]}/v1"
+        api_key="glimp_router",  # OR change to the api key of your model
+        base_url=f"http://localhost:{ports[size]}/v1",  # OR change to the base url of your model, e.g. f"http://localhost:{ports[size]}/v1"
     )
 
 def get_first_user_msg(problem, options=None):

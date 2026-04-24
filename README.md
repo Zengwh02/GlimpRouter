@@ -42,16 +42,7 @@ bash setup.sh
 
 ### Quick Start
 
-This project uses a simple `config.json` to pass experiment settings to `src/main.py`. You can generate a config with the provided script and then run the main entrypoint:
-
-```shell
-cd src
-bash run.sh
-```
-
-The script writes `config.json` and launches `main.py` in the background, logging to `./logs/`.
-
-### Running the vLLM Server
+#### Running the vLLM Server
 
 If you serve models locally with vLLM, fill in placeholders in `server/serve.sh` and run:
 
@@ -63,6 +54,28 @@ bash serve.sh
 Notes:
 - Replace `YOUR_API_KEY`, `YOUR_MODEL_NAME_OR_PATH`, `YOUR_BASE_URL`, and `YOUR_PORT` with your own values.
 - Use the matching chat template from `server/template/` or provide your own.
+
+#### Running Inference
+
+This project uses a simple `config.json` to pass experiment settings to `src/main.py`. You can generate a config with the provided script and then run the main entrypoint:
+
+```shell
+cd src
+bash run.sh
+```
+
+The script writes `config.json` and launches `main.py` in the background, logging to `./logs/`.
+
+#### Evaluation
+
+After the experiment finishes, adjust the dataset name, repeat count, score threshold, and input/output paths in `eval/math_eval.sh` to match your run configuration, then execute:
+
+```shell
+cd eval
+bash math_eval.sh
+```
+
+The script reads the generated prediction files, compares them with the reference answers, and prints the final accuracy.
 
 ### Key Scripts
 

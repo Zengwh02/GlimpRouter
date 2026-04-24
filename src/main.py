@@ -79,7 +79,7 @@ def main(args):
 
     # Choose scoring strategy and thresholds.
     score_method = "first_token_entropy"
-    score_threshold = 1.0
+    score_threshold = 0.9
     first_n_steps_base_model = 0
     
     if args.score_method == 'zeroshot':

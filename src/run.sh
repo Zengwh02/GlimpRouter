@@ -3,13 +3,13 @@
 #################################################
 
 CONFIG_PATH="config.json"
-DATASET_NAME="lcbv5"
-REPEAT_NUM=6
+DATASET_NAME="aime25"
+REPEAT_NUM=1
 SCORE_METHOD="first_token_entropy"
 TOKEN_BUDGET=8192
 MODEL_SIZE="32b"
 SMALL_MODEL_SIZE="4b"
-SCORE_TRESHOLD=0.8
+SCORE_TRESHOLD=0.9
 OUTPUT_DIR="./large${MODEL_SIZE}_small${SMALL_MODEL_SIZE}_${SCORE_METHOD}_${SCORE_TRESHOLD}_results"
 LOG_DIR="./logs"
 LOG_FILE="${LOG_DIR}/large${MODEL_SIZE}_small${SMALL_MODEL_SIZE}_${SCORE_METHOD}_${SCORE_TRESHOLD}_${DATASET_NAME}_$(date +%Y%m%d_%H%M%S).out"
